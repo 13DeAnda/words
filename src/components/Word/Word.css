@@ -1,0 +1,10 @@
+.letterContainer {
+    background: #959ed7;
+    height: 30px;
+    width: 30px;
+    padding: 8px;
+    display: inline;
+    margin-right: 15px;
+    font-size: 15px;
+    font-weight: 700;
+}
