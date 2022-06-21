@@ -1,8 +1,9 @@
 .Header {
     background: black;
-    color: white;
-    height: 30px;
+    height: 40px;
     width: 100%;
     position: absolute;
     top: 0;
+    color: white;
+    padding: 10px 15px 10px 15px;
 }

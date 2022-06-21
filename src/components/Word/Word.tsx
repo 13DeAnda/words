@@ -6,7 +6,9 @@ function Word() {
     const [wordArray, setWordArray] = useState(['']);
 
     useEffect(() => {
-        setWordArray(word.split(''));
+        if (wordArray.length === 1) {
+            setWordArray(word.split(''));
+        }
     });
 
     return (
