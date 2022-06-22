@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './Word.css';
 
-function Word() {
-    const [word, setWord] = useState<string>('authoritharian');
+function Word(props: { word: string }) {
     const [wordArray, setWordArray] = useState(['']);
 
     useEffect(() => {
-        if (wordArray.length === 1) {
-            setWordArray(word.split(''));
+        if (wordArray.length === 1 && props.word.length) {
+            setWordArray(props.word.split(''));
         }
     });
 
     return (
         <div className="Word">
-            the word: {word}
             {wordArray.map((letter: string, index: number) => (
                 <div className="letterContainer" key={`letter${index}`}>
                     {' '}
-                    {letter}
+                    {letter.toLocaleUpperCase()}
                 </div>
             ))}
         </div>
