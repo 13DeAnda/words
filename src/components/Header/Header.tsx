@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -24,14 +23,15 @@ export default function Header() {
     };
     return (
         <div className="Header">
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Typography>
-                    <Button variant="contained">Retrive New Word</Button>
+            <div className="navBar">
+                <Typography className="menuItem">
+                    <Button variant="contained">Retrive</Button>
                 </Typography>
-                <Typography sx={{ minWidth: 100 }}>
+
+                <Typography className="menuItem" sx={{ minWidth: 100 }}>
                     <b>00:00:00</b>
                 </Typography>
-                <Tooltip title="Account settings">
+                <Tooltip className="menuItem" title="Account settings">
                     <IconButton
                         onClick={handleClick}
                         size="small"
@@ -43,7 +43,8 @@ export default function Header() {
                         <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
                     </IconButton>
                 </Tooltip>
-            </Box>
+            </div>
+            <Divider />
             <Menu
                 anchorEl={anchorEl}
                 id="account-menu"
