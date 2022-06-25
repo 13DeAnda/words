@@ -1,0 +1,19 @@
+.Word {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.letterContainer {
+    background: #539e5f;
+    border-radius: 10px;
+    width: calc(100% / 20);
+    height: calc(100% / 20);
+    padding: 2px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    color: white;
+}
