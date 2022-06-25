@@ -3,19 +3,17 @@
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .letterContainer {
-    flex-flow: row wrap;
-    flex: 1 1 auto;
-
     background: #539e5f;
     border-radius: 10px;
-    height: 30px;
-    width: 30px;
-    padding: 5px;
-    margin-right: 20px;
-
-    font-size: 20px;
+    width: calc(100% / 20);
+    height: calc(100% / 20);
+    padding: 2px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 15px;
     font-weight: bolder;
     color: white;
 }
