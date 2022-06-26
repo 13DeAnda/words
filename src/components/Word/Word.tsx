@@ -10,6 +10,17 @@ function Word(props: { word: string }) {
     const [wordArray, setWordArray] = useState(['']);
     const [typedWord, setTypedWord] = useState<wordMapType[]>([]);
 
+    const onKeyDownDetected = (letter: string) => {
+        console.log('a key down was detected', letter);
+    };
+
+    document.onkeydown = function (evt) {
+        evt = evt || window.event;
+        if ((evt.keyCode >= 65 && evt.keyCode <= 90) || evt.key === 'Backspace') {
+            onKeyDownDetected(evt.key);
+        }
+    };
+
     useEffect(() => {
         if (wordArray.length === 1 && props.word.length) {
             setWordArray(props.word.split(''));
