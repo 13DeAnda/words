@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Word.css';
+import Button from '@mui/material/Button';
 
 interface wordMapType {
     letter: string;
@@ -11,6 +12,18 @@ function Word(props: { word: string }) {
     const [wordArray, setWordArray] = useState(['']);
     const [typedWord, setTypedWord] = useState<wordMapType[]>([]);
     const [lettersTyped, setLettersTyped] = useState(0);
+
+    const verifyWord = (word: wordMapType[]) => {
+        const copyWord = [...word];
+        for (let i = 0; i < props.word.length; i++) {
+            for (const letter of copyWord) {
+                if (letter.typed == props.word[i]) {
+                    letter.found = true;
+                }
+            }
+        }
+        console.log('was the state changed', copyWord);
+    };
 
     const onKeyDownDetected = (letter: string) => {
         if (letter === 'Backspace') {
@@ -49,13 +62,23 @@ function Word(props: { word: string }) {
     });
 
     return (
-        <div className="Word">
-            {typedWord.map((space: wordMapType, index: number) => (
-                <div className="letterContainer" key={`letter${index}`}>
-                    {' '}
-                    {space.typed !== '' ? space.typed.toLocaleUpperCase() : '.'}
-                </div>
-            ))}
+        <div>
+            <div className="Word">
+                {typedWord.map((space: wordMapType, index: number) => (
+                    <div className="letterContainer" key={`letter${index}`}>
+                        {' '}
+                        {space.typed !== '' ? space.typed.toLocaleUpperCase() : '.'}
+                    </div>
+                ))}
+            </div>
+            <Button
+                variant="contained"
+                onClick={() => {
+                    verifyWord(typedWord);
+                }}
+            >
+                Verify
+            </Button>
         </div>
     );
 }
