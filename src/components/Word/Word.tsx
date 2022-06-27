@@ -3,15 +3,30 @@ import './Word.css';
 
 interface wordMapType {
     letter: string;
+    typed: string;
     found: boolean;
 }
 
 function Word(props: { word: string }) {
     const [wordArray, setWordArray] = useState(['']);
     const [typedWord, setTypedWord] = useState<wordMapType[]>([]);
+    const [lettersTyped, setLettersTyped] = useState(0);
 
     const onKeyDownDetected = (letter: string) => {
-        console.log('a key down was detected', letter);
+        if (letter === 'Backspace') {
+            if (lettersTyped !== 0) {
+                const wordArrayCopy = [...typedWord];
+                wordArrayCopy[lettersTyped - 1].typed = '';
+                setLettersTyped(lettersTyped - 1);
+            }
+        } else {
+            if (lettersTyped < props.word.length) {
+                const wordArrayCopy = [...typedWord];
+                console.log('the copy', wordArrayCopy);
+                wordArrayCopy[lettersTyped].typed = letter;
+                setLettersTyped(lettersTyped + 1);
+            }
+        }
     };
 
     document.onkeydown = function (evt) {
@@ -27,7 +42,7 @@ function Word(props: { word: string }) {
             //pushing blank word
             const tempArr = [];
             for (let i = 0; i < props.word.length; i++) {
-                tempArr.push({ letter: props.word[i], found: false });
+                tempArr.push({ letter: props.word[i], typed: '', found: false });
             }
             setTypedWord(tempArr);
         }
@@ -38,7 +53,7 @@ function Word(props: { word: string }) {
             {typedWord.map((space: wordMapType, index: number) => (
                 <div className="letterContainer" key={`letter${index}`}>
                     {' '}
-                    {space.found ? space.letter.toLocaleUpperCase() : '.'}
+                    {space.typed !== '' ? space.typed.toLocaleUpperCase() : '.'}
                 </div>
             ))}
         </div>
