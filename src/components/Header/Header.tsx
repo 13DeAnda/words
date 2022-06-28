@@ -25,7 +25,7 @@ export default function Header() {
         <div className="Header">
             <div className="navBar">
                 <Typography className="menuItem">
-                    <Button variant="contained">Retrive</Button>
+                    <Button variant="contained">NEXT</Button>
                 </Typography>
 
                 <Typography className="menuItem" sx={{ minWidth: 100 }}>

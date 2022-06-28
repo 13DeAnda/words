@@ -17,3 +17,10 @@
     font-weight: bolder;
     color: white;
 }
+
+.correct {
+    background: green;
+}
+.incorrect {
+    background: red;
+}
