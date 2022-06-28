@@ -12,6 +12,7 @@ function Word(props: { word: string }) {
     const [wordArray, setWordArray] = useState(['']);
     const [typedWord, setTypedWord] = useState<wordMapType[]>([]);
     const [lettersTyped, setLettersTyped] = useState(0);
+    const [wordVerified, setWordVerified] = useState(false);
 
     const verifyWord = (word: wordMapType[]) => {
         const copyWord = [...word];
@@ -23,6 +24,7 @@ function Word(props: { word: string }) {
             }
         }
         console.log('was the state changed', copyWord);
+        setWordVerified(true);
     };
 
     const onKeyDownDetected = (letter: string) => {
@@ -65,7 +67,10 @@ function Word(props: { word: string }) {
         <div>
             <div className="Word">
                 {typedWord.map((space: wordMapType, index: number) => (
-                    <div className="letterContainer" key={`letter${index}`}>
+                    <div
+                        className={`letterContainer ${wordVerified ? (space.found ? 'correct' : 'incorrect') : ''} `}
+                        key={`letter${index}`}
+                    >
                         {' '}
                         {space.typed !== '' ? space.typed.toLocaleUpperCase() : '.'}
                     </div>

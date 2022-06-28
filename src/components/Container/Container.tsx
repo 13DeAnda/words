@@ -11,17 +11,19 @@ export default function Container() {
     const [post, setPost] = React.useState(null);
 
     const retriveWord = () => {
-        axios.get(baseURL).then((response) => {
-            setPost(response.data);
-            setWord(response.data[0]);
-        });
+        setWord('comerian');
+        //TEMP  commented because api server is down
+        // axios.get(baseURL).then((response) => {
+        //     setPost(response.data);
+        //     setWord(response.data[0]);
+        // });
     };
 
     useEffect(() => {
         retriveWord();
     }, []);
 
-    if (!post) return null;
+    // if (!post) return null;
 
     return (
         <div className="Container">
