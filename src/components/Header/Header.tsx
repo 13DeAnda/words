@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,18 +9,24 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
+import Timer from '../Timer/Timer';
 
 import './Header.css';
 
 export default function Header() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + 600);
+
     return (
         <div className="Header">
             <div className="navBar">
@@ -29,7 +35,9 @@ export default function Header() {
                 </Typography>
 
                 <Typography className="menuItem" sx={{ minWidth: 100 }}>
-                    <b>00:00:00</b>
+                    <b>
+                        <Timer />
+                    </b>
                 </Typography>
                 <Tooltip className="menuItem" title="Account settings">
                     <IconButton
