@@ -8,15 +8,31 @@ const baseURL = 'https://random-word-api.herokuapp.com/word';
 
 export default function Container() {
     const [word, setWord] = useState<string>('');
-    const [post, setPost] = React.useState(null);
+    const [post, setPost] = useState(null);
+    const [tries, setTries] = useState<any[]>([]);
 
     const retriveWord = () => {
         setWord('comerian');
+        addWordLine('comerian');
         //TEMP  commented because api server is down
         // axios.get(baseURL).then((response) => {
         //     setPost(response.data);
         //     setWord(response.data[0]);
+        //      addWordLine(response.data[0]);
         // });
+    };
+
+    const addWordLine = (wordR?: string) => {
+        const key = `wordLine_${tries.length}`;
+        const elem = (
+            <div key={key}>
+                <Word word={wordR || word} />
+            </div>
+        );
+        // 4 tries for game over.
+        if (tries.length < 5) {
+            setTries([elem]);
+        }
     };
 
     useEffect(() => {
@@ -27,7 +43,9 @@ export default function Container() {
 
     return (
         <div className="Container">
-            <Word word={word} />
+            {tries.map((elem: any, index: number) => (
+                <div key="number">{elem}</div>
+            ))}
         </div>
     );
 }

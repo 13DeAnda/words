@@ -46,7 +46,7 @@ function Word(props: { word: string }) {
 
     document.onkeydown = function (evt) {
         evt = evt || window.event;
-        if ((evt.keyCode >= 65 && evt.keyCode <= 90) || evt.key === 'Backspace') {
+        if ((!wordVerified && evt.keyCode >= 65 && evt.keyCode <= 90) || evt.key === 'Backspace') {
             onKeyDownDetected(evt.key);
         }
     };
@@ -76,14 +76,16 @@ function Word(props: { word: string }) {
                     </div>
                 ))}
             </div>
-            <Button
-                variant="contained"
-                onClick={() => {
-                    verifyWord(typedWord);
-                }}
-            >
-                Verify
-            </Button>
+            {!wordVerified ? (
+                <Button
+                    variant="contained"
+                    onClick={() => {
+                        verifyWord(typedWord);
+                    }}
+                >
+                    Verify
+                </Button>
+            ) : null}
         </div>
     );
 }
