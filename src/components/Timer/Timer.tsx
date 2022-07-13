@@ -5,8 +5,8 @@ export default function Timer() {
     const { seconds, minutes } = useStopwatch({ autoStart: true });
 
     return (
-        <div>
+        <b>
             {minutes}: {seconds}
-        </div>
+        </b>
     );
 }

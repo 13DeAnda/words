@@ -35,9 +35,7 @@ export default function Header() {
                 </Typography>
 
                 <Typography className="menuItem" sx={{ minWidth: 100 }}>
-                    <b>
-                        <Timer />
-                    </b>
+                    <Timer />
                 </Typography>
                 <Tooltip className="menuItem" title="Account settings">
                     <IconButton
