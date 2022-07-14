@@ -8,7 +8,7 @@ interface wordMapType {
     found: boolean;
 }
 
-function Word(props: { word: string }) {
+function Word(props: { word: string; onAtempt: (success: boolean, word: string) => void }) {
     const [wordArray, setWordArray] = useState(['']);
     const [typedWord, setTypedWord] = useState<wordMapType[]>([]);
     const [lettersTyped, setLettersTyped] = useState(0);
@@ -16,15 +16,23 @@ function Word(props: { word: string }) {
 
     const verifyWord = (word: wordMapType[]) => {
         const copyWord = [...word];
+        let wordTyped = '';
+        let correctGuess = false;
+
         for (let i = 0; i < props.word.length; i++) {
             for (const letter of copyWord) {
+                wordTyped += letter.typed;
                 if (letter.typed == props.word[i]) {
                     letter.found = true;
                 }
             }
+            if (wordTyped === props.word) {
+                correctGuess = true;
+            }
         }
-        console.log('was the state changed', copyWord);
+
         setWordVerified(true);
+        props.onAtempt(correctGuess, props.word);
     };
 
     const onKeyDownDetected = (letter: string) => {
@@ -37,7 +45,6 @@ function Word(props: { word: string }) {
         } else {
             if (lettersTyped < props.word.length) {
                 const wordArrayCopy = [...typedWord];
-                console.log('the copy', wordArrayCopy);
                 wordArrayCopy[lettersTyped].typed = letter;
                 setLettersTyped(lettersTyped + 1);
             }

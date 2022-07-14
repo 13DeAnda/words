@@ -3,6 +3,7 @@ import './Container.css';
 
 import Word from '../Word/Word';
 import axios from 'axios';
+import Button from '@mui/material/Button';
 
 const baseURL = 'https://random-word-api.herokuapp.com/word';
 
@@ -22,16 +23,31 @@ export default function Container() {
         // });
     };
 
+    const onAttempt = (won: boolean, word: string) => {
+        if (won) {
+            alert('game won');
+            retriveWord();
+        } else {
+            console.log('whats on here', word);
+            addWordLine(word);
+        }
+    };
+
     const addWordLine = (wordR?: string) => {
-        const key = `wordLine_${tries.length}`;
-        const elem = (
-            <div key={key}>
-                <Word word={wordR || word} />
-            </div>
-        );
-        // 4 tries for game over.
-        if (tries.length < 5) {
-            setTries([elem]);
+        const index = document.getElementsByClassName('wordLine').length;
+        if (index < 4) {
+            const key = `wordLine_${index}`;
+            const elem = (
+                <div key={key} className={'wordLine'}>
+                    <Word word={wordR || word} onAtempt={onAttempt} />
+                </div>
+            );
+
+            if (index) {
+                setTries((tries) => [...tries, elem]);
+            } else {
+                setTries([elem]);
+            }
         }
     };
 
@@ -39,12 +55,14 @@ export default function Container() {
         retriveWord();
     }, []);
 
-    // if (!post) return null;
+    useEffect(() => {
+        console.log('tries updated', tries);
+    }, [tries]);
 
     return (
         <div className="Container">
             {tries.map((elem: any, index: number) => (
-                <div key="number">{elem}</div>
+                <div key={`wordLine_${index}`}>{elem}</div>
             ))}
         </div>
     );
