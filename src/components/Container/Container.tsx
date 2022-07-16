@@ -2,33 +2,35 @@ import React, { useState, useEffect } from 'react';
 import './Container.css';
 
 import Word from '../Word/Word';
-import axios from 'axios';
-import Button from '@mui/material/Button';
-
-const baseURL = 'https://random-word-api.herokuapp.com/word';
+import { getRandomWord, getUser, updateUser, loading } from '../../services/game';
 
 export default function Container() {
     const [word, setWord] = useState<string>('');
-    const [post, setPost] = useState(null);
     const [tries, setTries] = useState<any[]>([]);
 
-    const retriveWord = () => {
-        setWord('comerian');
-        addWordLine('comerian');
-        //TEMP  commented because api server is down
-        // axios.get(baseURL).then((response) => {
-        //     setPost(response.data);
-        //     setWord(response.data[0]);
-        //      addWordLine(response.data[0]);
-        // });
+    const retriveWord = async () => {
+        const wordResponse = await getRandomWord();
+        console.log('word response', wordResponse);
+        setWord(wordResponse);
+        addWordLine(wordResponse);
+    };
+
+    const gameWon = async () => {
+        // TEMP: till we have users functionality
+        const userId = 1;
+        const userResponse = await getUser(userId);
+        // TODO: need to figure out a scoring calc
+        const newScore = 555;
+        userResponse.score = newScore;
+        console.log('we got user', userResponse);
+        const newScoreR = await updateUser(userId, userResponse);
     };
 
     const onAttempt = (won: boolean, word: string) => {
         if (won) {
             alert('game won');
-            retriveWord();
+            gameWon();
         } else {
-            console.log('whats on here', word);
             addWordLine(word);
         }
     };
@@ -52,12 +54,10 @@ export default function Container() {
     };
 
     useEffect(() => {
-        retriveWord();
+        if (!word.length && !loading) {
+            retriveWord();
+        }
     }, []);
-
-    useEffect(() => {
-        console.log('tries updated', tries);
-    }, [tries]);
 
     return (
         <div className="Container">
