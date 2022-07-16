@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Container.css';
 
 import Word from '../Word/Word';
-import { getRandomWord } from '../../services/game';
+import { getRandomWord, getUser, updateUser, loading } from '../../services/game';
 
 export default function Container() {
     const [word, setWord] = useState<string>('');
@@ -10,16 +10,27 @@ export default function Container() {
 
     const retriveWord = async () => {
         const wordResponse = await getRandomWord();
+        console.log('word response', wordResponse);
         setWord(wordResponse);
         addWordLine(wordResponse);
+    };
+
+    const gameWon = async () => {
+        // TEMP: till we have users functionality
+        const userId = 1;
+        const userResponse = await getUser(userId);
+        // TODO: need to figure out a scoring calc
+        const newScore = 555;
+        userResponse.score = newScore;
+        console.log('we got user', userResponse);
+        const newScoreR = await updateUser(userId, userResponse);
     };
 
     const onAttempt = (won: boolean, word: string) => {
         if (won) {
             alert('game won');
-            retriveWord();
+            gameWon();
         } else {
-            console.log('whats on here', word);
             addWordLine(word);
         }
     };
@@ -43,7 +54,7 @@ export default function Container() {
     };
 
     useEffect(() => {
-        if (!word.length) {
+        if (!word.length && !loading) {
             retriveWord();
         }
     }, []);

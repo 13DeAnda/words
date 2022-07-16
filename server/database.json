@@ -1,6 +1,14 @@
 {
-    "users": [
-        { "id": 1, "username": "13DeAnda", "score": 0 },
-        { "id": 2, "username": "MariaCn", "score": 455 }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "username": "13DeAnda",
+      "score": 555
+    },
+    {
+      "id": 2,
+      "username": "MariaCn",
+      "score": 455
+    }
+  ]
 }
