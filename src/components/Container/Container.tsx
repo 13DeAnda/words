@@ -7,10 +7,11 @@ import { getRandomWord, getUser, updateUser, loading } from '../../services/game
 export default function Container() {
     const [word, setWord] = useState<string>('');
     const [tries, setTries] = useState<any[]>([]);
+    const [score, setScore] = useState<number>(0); // TODO: implement once has login
 
     const retriveWord = async () => {
         const wordResponse = await getRandomWord();
-        console.log('word response', wordResponse);
+        console.log('word:', wordResponse);
         setWord(wordResponse);
         addWordLine(wordResponse);
     };
@@ -20,16 +21,17 @@ export default function Container() {
         const userId = 1;
         const userResponse = await getUser(userId);
         // TODO: need to figure out a scoring calc
-        const newScore = 555;
+        const newScore = userResponse.score + 1;
         userResponse.score = newScore;
-        console.log('we got user', userResponse);
         const newScoreR = await updateUser(userId, userResponse);
+        console.log('new score', newScore);
+        setScore(newScore);
     };
 
     const onAttempt = (won: boolean, word: string) => {
         if (won) {
-            alert('game won');
             gameWon();
+            console.log('how many tries its', tries);
         } else {
             addWordLine(word);
         }
@@ -58,6 +60,14 @@ export default function Container() {
             retriveWord();
         }
     }, []);
+
+    useEffect(() => {
+        if (score > 0) {
+            console.log('the score changed', score);
+            setTries([]);
+            retriveWord();
+        }
+    }, [score]);
 
     return (
         <div className="Container">

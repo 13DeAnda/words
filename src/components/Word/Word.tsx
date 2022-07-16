@@ -2,19 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './Word.css';
 import Button from '@mui/material/Button';
 
-interface wordMapType {
-    letter: string;
-    typed: string;
-    found: boolean;
-}
+import { wordMapI } from '../../Interfaces/wordMap';
 
 function Word(props: { word: string; onAtempt: (success: boolean, word: string) => void }) {
     const [wordArray, setWordArray] = useState(['']);
-    const [typedWord, setTypedWord] = useState<wordMapType[]>([]);
+    const [typedWord, setTypedWord] = useState<wordMapI[]>([]);
     const [lettersTyped, setLettersTyped] = useState(0);
     const [wordVerified, setWordVerified] = useState(false);
 
-    const verifyWord = (word: wordMapType[]) => {
+    const verifyWord = (word: wordMapI[]) => {
         const copyWord = [...word];
         let wordTyped = '';
         let correctGuess = false;
@@ -73,7 +69,7 @@ function Word(props: { word: string; onAtempt: (success: boolean, word: string) 
     return (
         <div>
             <div className="Word">
-                {typedWord.map((space: wordMapType, index: number) => (
+                {typedWord.map((space: wordMapI, index: number) => (
                     <div
                         className={`letterContainer ${wordVerified ? (space.found ? 'correct' : 'incorrect') : ''} `}
                         key={`letter${index}`}
