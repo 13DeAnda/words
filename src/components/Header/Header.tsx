@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
-import Timer from '../Timer/Timer';
 
 import './Header.css';
 
@@ -24,18 +23,11 @@ export default function Header() {
         setAnchorEl(null);
     };
 
-    const time = new Date();
-    time.setSeconds(time.getSeconds() + 600);
-
     return (
         <div className="Header">
             <div className="navBar">
                 <Typography className="menuItem">
                     <Button variant="contained">NEXT</Button>
-                </Typography>
-
-                <Typography className="menuItem" sx={{ minWidth: 100 }}>
-                    <Timer />
                 </Typography>
                 <Tooltip className="menuItem" title="Account settings">
                     <IconButton
