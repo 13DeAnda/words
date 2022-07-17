@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,21 +15,19 @@ import './Header.css';
 export default function Header() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <div className="Header">
             <div className="navBar">
                 <Typography className="menuItem">
                     <Button variant="contained">NEXT</Button>
-                </Typography>
-
-                <Typography className="menuItem" sx={{ minWidth: 100 }}>
-                    <b>00:00:00</b>
                 </Typography>
                 <Tooltip className="menuItem" title="Account settings">
                     <IconButton

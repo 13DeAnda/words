@@ -2,29 +2,33 @@ import React, { useState, useEffect } from 'react';
 import './Word.css';
 import Button from '@mui/material/Button';
 
-interface wordMapType {
-    letter: string;
-    typed: string;
-    found: boolean;
-}
+import { wordMapI } from '../../Interfaces/wordMap';
 
-function Word(props: { word: string }) {
+function Word(props: { word: string; onAtempt: (success: boolean, word: string) => void }) {
     const [wordArray, setWordArray] = useState(['']);
-    const [typedWord, setTypedWord] = useState<wordMapType[]>([]);
+    const [typedWord, setTypedWord] = useState<wordMapI[]>([]);
     const [lettersTyped, setLettersTyped] = useState(0);
     const [wordVerified, setWordVerified] = useState(false);
 
-    const verifyWord = (word: wordMapType[]) => {
+    const verifyWord = (word: wordMapI[]) => {
         const copyWord = [...word];
+        let wordTyped = '';
+        let correctGuess = false;
+
         for (let i = 0; i < props.word.length; i++) {
             for (const letter of copyWord) {
+                wordTyped += letter.typed;
                 if (letter.typed == props.word[i]) {
                     letter.found = true;
                 }
             }
+            if (wordTyped === props.word) {
+                correctGuess = true;
+            }
         }
-        console.log('was the state changed', copyWord);
+
         setWordVerified(true);
+        props.onAtempt(correctGuess, props.word);
     };
 
     const onKeyDownDetected = (letter: string) => {
@@ -37,7 +41,6 @@ function Word(props: { word: string }) {
         } else {
             if (lettersTyped < props.word.length) {
                 const wordArrayCopy = [...typedWord];
-                console.log('the copy', wordArrayCopy);
                 wordArrayCopy[lettersTyped].typed = letter;
                 setLettersTyped(lettersTyped + 1);
             }
@@ -46,7 +49,7 @@ function Word(props: { word: string }) {
 
     document.onkeydown = function (evt) {
         evt = evt || window.event;
-        if ((evt.keyCode >= 65 && evt.keyCode <= 90) || evt.key === 'Backspace') {
+        if ((!wordVerified && evt.keyCode >= 65 && evt.keyCode <= 90) || evt.key === 'Backspace') {
             onKeyDownDetected(evt.key);
         }
     };
@@ -66,7 +69,7 @@ function Word(props: { word: string }) {
     return (
         <div>
             <div className="Word">
-                {typedWord.map((space: wordMapType, index: number) => (
+                {typedWord.map((space: wordMapI, index: number) => (
                     <div
                         className={`letterContainer ${wordVerified ? (space.found ? 'correct' : 'incorrect') : ''} `}
                         key={`letter${index}`}
@@ -76,14 +79,16 @@ function Word(props: { word: string }) {
                     </div>
                 ))}
             </div>
-            <Button
-                variant="contained"
-                onClick={() => {
-                    verifyWord(typedWord);
-                }}
-            >
-                Verify
-            </Button>
+            {!wordVerified ? (
+                <Button
+                    variant="contained"
+                    onClick={() => {
+                        verifyWord(typedWord);
+                    }}
+                >
+                    Verify
+                </Button>
+            ) : null}
         </div>
     );
 }

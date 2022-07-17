@@ -5,3 +5,10 @@
     overflow-x: hidden;
     text-align: center;
 }
+.displayBar {
+    display: flex;
+    flex-direction: row;
+}
+.menuItem {
+    flex: 1 1 0px;
+}
