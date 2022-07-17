@@ -86,8 +86,6 @@ export default function Container() {
         setScore(newScoreR.score);
     };
 
-    const displayNewGameConfirmation = () => {};
-
     useEffect(() => {
         if (score > 0) {
             setTries([]);
