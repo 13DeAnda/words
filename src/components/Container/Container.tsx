@@ -12,7 +12,7 @@ export default function Container() {
     const [tries, setTries] = useState<any[]>([]);
     const [score, setScore] = useState<number>(0); // TODO: implement once has login
     const [scoreDisplayed, setScoreDisplayed] = useState<number>(0);
-    const { seconds, minutes } = useStopwatch({ autoStart: true });
+    const { seconds, minutes, start, reset } = useStopwatch({ autoStart: false });
 
     const formatTime = (time: number) => {
         return String(time).padStart(2, '0');
@@ -22,6 +22,11 @@ export default function Container() {
         console.log('word:', wordResponse);
         setWord(wordResponse);
         addWordLine(wordResponse);
+        if (seconds || minutes) {
+            reset();
+        } else {
+            start();
+        }
     };
 
     const retriveUserScore = async () => {
@@ -34,7 +39,12 @@ export default function Container() {
         if (won) {
             gameWon();
         } else {
-            addWordLine(word);
+            const triesLength = document.getElementsByClassName('wordLine').length;
+            if (triesLength !== 4) {
+                addWordLine(word);
+            } else {
+                gameOver();
+            }
         }
     };
 
@@ -56,15 +66,27 @@ export default function Container() {
         }
     };
 
+    // TODO: needs a pop up declaring game was won or lost
     const gameWon = async () => {
         const userResponse = await getUser(userId);
 
-        const newScore = userResponse.score + ((5 - tries.length) * Math.round(30.34)) / 60;
+        const newScore = userResponse.score + ((5 - tries.length) * Math.round(minutes + seconds / 60)) / 60;
         userResponse.score = newScore;
         const newScoreR = await updateUser(userId, userResponse);
         setScoreDisplayed(newScoreR.score);
         setScore(newScoreR.score);
     };
+    const gameOver = async () => {
+        const userResponse = await getUser(userId);
+
+        const newScore = userResponse.score - 1;
+        userResponse.score = newScore;
+        const newScoreR = await updateUser(userId, userResponse);
+        setScoreDisplayed(newScoreR.score);
+        setScore(newScoreR.score);
+    };
+
+    const displayNewGameConfirmation = () => {};
 
     useEffect(() => {
         if (score > 0) {
