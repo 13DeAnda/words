@@ -8,15 +8,14 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
-import Button from '@mui/material/Button';
-
+import HelpOutLinedIcon from '@mui/icons-material/HelpOutlineRounded';
 import './Header.css';
 
 export default function Header() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
@@ -27,11 +26,14 @@ export default function Header() {
         <div className="Header">
             <div className="navBar">
                 <Typography className="menuItem">
-                    <Button variant="contained">NEXT</Button>
+                    <IconButton color="primary" size="small" sx={{ ml: 2 }} aria-label="help">
+                        <HelpOutLinedIcon sx={{ width: 32, height: 32 }} style={{ color: 'gray' }} />
+                    </IconButton>
                 </Typography>
+                <div className={'menuItem title'}>WORDS</div>
                 <Tooltip className="menuItem" title="Account settings">
                     <IconButton
-                        onClick={handleClick}
+                        onClick={handleMenuClick}
                         size="small"
                         sx={{ ml: 2 }}
                         aria-controls={open ? 'account-menu' : undefined}

@@ -103,12 +103,12 @@ export default function Container() {
     return (
         <div className="Container">
             <div className="displayBar">
-                <Typography className="menuItem" sx={{ minWidth: 100 }}>
+                <Typography className="menuItem timer" sx={{ minWidth: 100 }}>
                     <b>
                         {formatTime(minutes)}: {formatTime(seconds)}
                     </b>
                 </Typography>
-                <Typography className="menuItem" sx={{ minWidth: 100 }}>
+                <Typography className="menuItem score" sx={{ minWidth: 100 }}>
                     <b>Score: {scoreDisplayed}</b>
                 </Typography>
             </div>

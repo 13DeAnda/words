@@ -10,5 +10,13 @@
     flex-direction: row;
 }
 .menuItem {
-    flex: 1 1 0px;
+    flex: auto;
+}
+.timer {
+    justify-content: left;
+    text-align: left;
+}
+.score {
+    justify-content: right;
+    text-align: right;
 }
