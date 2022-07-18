@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, MouseEvent } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,11 +11,14 @@ import Logout from '@mui/icons-material/Logout';
 import HelpOutLinedIcon from '@mui/icons-material/HelpOutlineRounded';
 import './Header.css';
 
+const helpText =
+    'To play the game, guess the word, and click  the verify button, you have 4 tries, every try it will let you know which letters do are included on the word. Good Luck!';
 export default function Header() {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [openHelp, setOpenHelp] = useState<boolean>(false);
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
-    const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    const handleMenuClick = (event: MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
@@ -26,9 +29,17 @@ export default function Header() {
         <div className="Header">
             <div className="navBar">
                 <Typography className="menuItem">
-                    <IconButton color="primary" size="small" sx={{ ml: 2 }} aria-label="help">
-                        <HelpOutLinedIcon sx={{ width: 32, height: 32 }} style={{ color: 'gray' }} />
-                    </IconButton>
+                    <Tooltip title={helpText} open={openHelp}>
+                        <IconButton
+                            color="primary"
+                            size="small"
+                            sx={{ ml: 2 }}
+                            aria-label="help"
+                            onClick={() => setOpenHelp(!openHelp)}
+                        >
+                            <HelpOutLinedIcon sx={{ width: 32, height: 32 }} style={{ color: 'gray' }} />
+                        </IconButton>
+                    </Tooltip>
                 </Typography>
                 <div className={'menuItem title'}>WORDS</div>
                 <Tooltip className="menuItem" title="Account settings">
