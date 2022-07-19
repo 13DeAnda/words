@@ -1,9 +1,10 @@
 .Header {
+    padding-left: 10px;
+    padding-right: 10px;
     width: 100%;
     position: fixed;
-    background: black;
     padding: 10px 0;
-    color: #fff;
+    color: black;
     height: 80px;
 }
 .navBar {
@@ -15,4 +16,9 @@
 .menuItem {
     flex: 1 1 0px;
     align-items: right;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 20px;
 }

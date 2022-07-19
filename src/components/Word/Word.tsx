@@ -75,13 +75,14 @@ function Word(props: { word: string; onAtempt: (success: boolean, word: string) 
                         key={`letter${index}`}
                     >
                         {' '}
-                        {space.typed !== '' ? space.typed.toLocaleUpperCase() : '.'}
+                        {space.typed !== '' ? space.typed.toLocaleUpperCase() : '-'}
                     </div>
                 ))}
             </div>
             {!wordVerified ? (
                 <Button
                     variant="contained"
+                    color="secondary"
                     onClick={() => {
                         verifyWord(typedWord);
                     }}
