@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { useStopwatch } from 'react-timer-hook';
 
 import Word from '../Word/Word';
+import GameStatsModal from './GameStatsModal/GameStatsModal';
 import { getRandomWord, getUser, updateUser, loading } from '../../services/GameService';
 const userId = 1; // TODO: replace once we have users hook up.
 
@@ -11,6 +12,7 @@ export default function Container() {
     const [word, setWord] = useState<string>('');
     const [tries, setTries] = useState<any[]>([]);
     const [score, setScore] = useState<number>(0); // TODO: implement once has login
+    const [scoreModal, setScoreModal] = useState<string | null>(null);
     const [scoreDisplayed, setScoreDisplayed] = useState<number>(0);
     const { seconds, minutes, start, reset } = useStopwatch({ autoStart: false });
 
@@ -75,6 +77,7 @@ export default function Container() {
         const newScoreR = await updateUser(userId, userResponse);
         setScoreDisplayed(newScoreR.score);
         setScore(newScoreR.score);
+        setScoreModal('won');
     };
     const gameOver = async () => {
         const userResponse = await getUser(userId);
@@ -84,14 +87,13 @@ export default function Container() {
         const newScoreR = await updateUser(userId, userResponse);
         setScoreDisplayed(newScoreR.score);
         setScore(newScoreR.score);
+        setScoreModal('lost');
     };
-
-    useEffect(() => {
-        if (score > 0) {
-            setTries([]);
-            retriveWord();
-        }
-    }, [score]);
+    const gameRestart = () => {
+        setScoreModal(null);
+        setTries([]);
+        retriveWord();
+    };
 
     useEffect(() => {
         if (!word.length && !loading) {
@@ -109,13 +111,19 @@ export default function Container() {
                     </b>
                 </Typography>
                 <Typography className="menuItem score" sx={{ minWidth: 100 }}>
-                    <b>Score: {scoreDisplayed}</b>
+                    <b>Score: {Math.round(scoreDisplayed)}</b>
                 </Typography>
             </div>
 
             {tries.map((elem: any, index: number) => (
                 <div key={`wordLine_${index}`}>{elem}</div>
             ))}
+            <GameStatsModal
+                open={scoreModal ? true : false}
+                handleClose={gameRestart}
+                score={score}
+                status={scoreModal}
+            />
         </div>
     );
 }
