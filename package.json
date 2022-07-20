@@ -64,5 +64,8 @@
         "*.{js,ts,tsx}": [
             "eslint --fix"
         ]
+    },
+    "devDependencies": {
+        "react-router-dom": "^6.3.0"
     }
 }
