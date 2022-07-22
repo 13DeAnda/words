@@ -1,14 +1,54 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "username": "13DeAnda",
-      "score": 558.6333333333333
-    },
-    {
-      "id": 2,
-      "username": "MariaCn",
-      "score": 455
-    }
-  ]
+    "users": [
+        {
+            "id": 1,
+            "username": "13DeAnda",
+            "score": 345455
+        },
+        {
+            "id": 2,
+            "username": "MariaCn",
+            "score": 4554
+        },
+        {
+            "id": 3,
+            "username": "Manasama",
+            "score": 4333355
+        },
+        {
+            "id": 4,
+            "username": "kurita",
+            "score": 2345
+        },
+        {
+            "id": 5,
+            "username": "jamesi",
+            "score": 22345
+        },
+        {
+            "id": 5,
+            "username": "jamesi",
+            "score": 22345
+        }
+    ],
+    "topUsers": [
+        {
+            "id": 3,
+            "rank": 1,
+            "username": "Manasama",
+            "score": 4333355
+        },
+        {
+            "id": 1,
+            "rank": 2,
+            "username": "13DeAnda",
+            "score": 345455
+        },
+        {
+            "id": 5,
+            "rank": 3,
+            "username": "jamesi",
+            "score": 22345
+        }
+    ]
 }
