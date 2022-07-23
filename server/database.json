@@ -33,19 +33,22 @@
     ],
     "topUsers": [
         {
-            "id": 3,
+            "id": 0,
+            "userId": 3,
             "rank": 1,
             "username": "Manasama",
             "score": 4333355
         },
         {
             "id": 1,
+            "userId": 1,
             "rank": 2,
             "username": "13DeAnda",
             "score": 345455
         },
         {
-            "id": 5,
+            "id": 2,
+            "userId": 5,
             "rank": 3,
             "username": "jamesi",
             "score": 22345
