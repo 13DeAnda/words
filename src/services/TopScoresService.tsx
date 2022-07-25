@@ -4,10 +4,12 @@ import { TopUserI } from '../Interfaces/topUser';
 import { UserI } from '../Interfaces/user';
 import axios from 'axios';
 
-export let loading = false;
+export let loadingTopUsers = false;
 
 export const getTopUsers = async () => {
+    loadingTopUsers = true;
     const response = await axios.get(`${baseDatabase}/topUsers`).then((response) => {
+        loadingTopUsers = false;
         return response.data;
     });
 
@@ -34,7 +36,7 @@ export const isTopUser = async (user: UserI) => {
     });
     let userToPush = null;
 
-    for (let index in response) {
+    for (const index in response) {
         const topUser = response[index];
         if (userToPush) {
             userToPush.id = index;
@@ -42,7 +44,7 @@ export const isTopUser = async (user: UserI) => {
             updateTopUser(userToPush.id, userToPush);
             userToPush = topUser;
         } else if (user.score <= topUser.score) {
-            let copy = {
+            const copy = {
                 rank: parseInt(index) + 1,
                 userId: user.id,
                 id: parseInt(index),
