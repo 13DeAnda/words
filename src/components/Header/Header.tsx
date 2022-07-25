@@ -10,6 +10,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import HelpOutLinedIcon from '@mui/icons-material/HelpOutlineRounded';
 import './Header.css';
+import { NavLink } from 'react-router-dom';
 
 const helpText =
     'To play the game, guess the word, and click  the verify button, you have 4 tries, every try it will let you know which letters do are included on the word. Good Luck!';
@@ -41,7 +42,12 @@ export default function Header() {
                         </IconButton>
                     </Tooltip>
                 </Typography>
-                <div className={'menuItem title'}>WORDS</div>
+                <div className={'menuItem title'}>
+                    <NavLink to="/" className="navLink">
+                        {' '}
+                        WORDS{' '}
+                    </NavLink>
+                </div>
                 <Tooltip className="menuItem" title="Account settings">
                     <IconButton
                         onClick={handleMenuClick}
@@ -92,11 +98,12 @@ export default function Header() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem>
-                    <Avatar /> Profile
+                    <Avatar />
+                    <NavLink to="/stats" className="navLink">
+                        Stats
+                    </NavLink>
                 </MenuItem>
-                <MenuItem>
-                    <Avatar /> Stats
-                </MenuItem>
+                <MenuItem>DarkMode</MenuItem>
                 <Divider />
                 <MenuItem>
                     <ListItemIcon>
