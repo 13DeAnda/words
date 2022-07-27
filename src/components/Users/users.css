@@ -1,3 +1,29 @@
 .topScores {
-    background: grey;
+    align-self: center;
+    background: #bdaeae80;
+    width: 300px;
+    display: inline-table;
+    height: 200px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+.topScore {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 4px;
+    display: flex;
+}
+.topScore div {
+    width: 100%;
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+.yourTopScore {
+    background-color: #ceafe0;
+}
+
+.userScore {
+    font-size: 40px;
 }
