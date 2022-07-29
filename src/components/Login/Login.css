@@ -1,0 +1,14 @@
+.login {
+    display: inline-grid;
+}
+.loginInput {
+    width: 300px;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.buttons .MuiButton-roo {
+    margin-top: 30px;
+}

@@ -106,10 +106,9 @@ export default function Header() {
                 <MenuItem>DarkMode</MenuItem>
                 <Divider />
                 <MenuItem>
-                    <ListItemIcon>
-                        <Logout fontSize="small" />
-                    </ListItemIcon>
-                    Logout
+                    <NavLink to="/login" className="navLink">
+                        Login
+                    </NavLink>
                 </MenuItem>
             </Menu>
         </div>
