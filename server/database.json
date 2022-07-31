@@ -3,12 +3,14 @@
         {
             "id": 1,
             "username": "13DeAnda",
-            "score": 345455
+            "score": 345455,
+            "password": ""
         },
         {
             "id": 2,
             "username": "MariaCn",
-            "score": 4554
+            "score": 4554,
+            "password": ""
         },
         {
             "id": 3,
@@ -18,17 +20,20 @@
         {
             "id": 4,
             "username": "kurita",
-            "score": 2345
+            "score": 2345,
+            "password": ""
         },
         {
             "id": 5,
             "username": "jamesi",
-            "score": 22345
+            "score": 22345,
+            "password": ""
         },
         {
             "id": 5,
             "username": "jamesi",
-            "score": 22345
+            "score": 22345,
+            "password": ""
         }
     ],
     "topUsers": [
