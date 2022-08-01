@@ -14,14 +14,14 @@ import { newUser } from '../../services/AuthService';
 import { IloginCred } from '../../Interfaces/LoginCred';
 
 function Login() {
-    const [values, setValues] = useState<IloginCred>({
-        username: '',
-        password: '',
-        passwordConfirm: '',
+    const [values, setValues] = useState<any>({
+        username: 'tamarinde1e@gmail.com',
+        password: '123#sks!',
+        passwordConfirm: '123#sks!',
         showPassword: false,
     });
 
-    const [loginView, setLoginView] = useState<boolean>(true);
+    const [loginView, setLoginView] = useState<boolean>(false);
 
     const handleChange = (prop: keyof IloginCred) => (event: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [prop]: event.target.value });

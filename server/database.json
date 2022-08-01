@@ -1,62 +1,39 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "username": "13DeAnda",
-            "score": 345455,
-            "password": ""
-        },
-        {
-            "id": 2,
-            "username": "MariaCn",
-            "score": 4554,
-            "password": ""
-        },
-        {
-            "id": 3,
-            "username": "Manasama",
-            "score": 4333355
-        },
-        {
-            "id": 4,
-            "username": "kurita",
-            "score": 2345,
-            "password": ""
-        },
-        {
-            "id": 5,
-            "username": "jamesi",
-            "score": 22345,
-            "password": ""
-        },
-        {
-            "id": 5,
-            "username": "jamesi",
-            "score": 22345,
-            "password": ""
-        }
-    ],
-    "topUsers": [
-        {
-            "id": 0,
-            "userId": 3,
-            "rank": 1,
-            "username": "Manasama",
-            "score": 4333355
-        },
-        {
-            "id": 1,
-            "userId": 1,
-            "rank": 2,
-            "username": "13DeAnda",
-            "score": 345455
-        },
-        {
-            "id": 2,
-            "userId": 5,
-            "rank": 3,
-            "username": "jamesi",
-            "score": 22345
-        }
-    ]
+  "users": [
+    {
+      "email": "tamarinde0e@gmail.com",
+      "password": "$2a$10$tv/P5G9mtO5ur5VNjEK94.NP2eL.CFsCQe0OQMBNTw53r4eMAnxpq",
+      "score": 0,
+      "id": 1
+    },
+    {
+      "email": "tamarinde1e@gmail.com",
+      "password": "$2a$10$FsHUZcZLTCwVnf545CvrduS09COITxDXhDnpeWNDSlcn2xUS4pDwi",
+      "score": 0,
+      "id": 2
+    }
+  ],
+  "topUsers": [
+    {
+      "id": 0,
+      "userId": 3,
+      "rank": 1,
+      "username": "Manasama",
+      "score": 4333355
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "rank": 2,
+      "username": "13DeAnda",
+      "score": 345455
+    },
+    {
+      "id": 2,
+      "userId": 5,
+      "rank": 3,
+      "username": "jamesi",
+      "score": 22345
+    }
+  ]
 }

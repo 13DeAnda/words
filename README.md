@@ -19,4 +19,4 @@ Open [http://localhost:4000]
 
 ## RUN the backend
 
-### `json-server db.json -m ./node_modules/json-server-auth`
+### `json-server --watch ./server/database.json -m ./node_modules/json-server-auth`
