@@ -39,7 +39,7 @@ function Users() {
                             className={user.userId == userId ? 'yourTopScore topScore' : 'topScore'}
                         >
                             <div>
-                                <b># {user.rank}</b> {user.username}{' '}
+                                <b># {user.rank}</b> {user.email}{' '}
                             </div>
                             <div>
                                 <b> {user.score} pts</b>

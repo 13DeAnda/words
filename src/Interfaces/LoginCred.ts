@@ -1,5 +1,5 @@
 export interface IloginCred {
-    username: string;
+    email: string;
     password: string;
     showPassword: boolean;
     passwordConfirm: string;

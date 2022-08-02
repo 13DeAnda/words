@@ -18,15 +18,46 @@ export const newUser = async (username: string, password: string) => {
         score: 0,
         password: password,
     };
-    console.log('new user', username, password, data);
     const response = await axios
         .post(`${baseDatabase}/register`, data, axiosConfig)
         .then((response) => {
             return response.data;
         })
-        .catch((err) => console.log('Login: ', err.response));
+        .catch((err) => {
+            return err.response;
+        });
 
     loading = false;
 
     return response;
+};
+export const logIn = async (username: string, password: string) => {
+    loading = true;
+    const data = {
+        email: username,
+        password: password,
+    };
+    const response = await axios
+        .post(`${baseDatabase}/login`, data, axiosConfig)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((err) => {
+            return err.response;
+        });
+
+    loading = false;
+
+    return response;
+};
+
+export const isLoggedIn = () => {
+    const logged = localStorage.getItem('wordsAppToken');
+
+    return logged ? true : false;
+};
+
+export const logOut = () => {
+    localStorage.removeItem('wordsAppToken');
+    window.location.reload();
 };

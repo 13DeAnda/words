@@ -40,12 +40,9 @@ export default function Header() {
                         </IconButton>
                     </Tooltip>
                 </Typography>
-                <div className={'menuItem title'}>
-                    <NavLink to="/" className="navLink">
-                        {' '}
-                        WORDS{' '}
-                    </NavLink>
-                </div>
+                <NavLink to="/" className="navLink menuItem">
+                    <div className={' title'}> WORDS </div>
+                </NavLink>
                 <Tooltip className="menuItem" title="Account settings">
                     <IconButton
                         onClick={handleMenuClick}
@@ -95,19 +92,17 @@ export default function Header() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem>
-                    <Avatar />
-                    <NavLink to="/stats" className="navLink">
+                <NavLink to="/stats" className="navLink">
+                    <MenuItem>
+                        <Avatar />
                         Stats
-                    </NavLink>
-                </MenuItem>
+                    </MenuItem>
+                </NavLink>
                 <MenuItem>DarkMode</MenuItem>
                 <Divider />
-                <MenuItem>
-                    <NavLink to="/login" className="navLink">
-                        Login
-                    </NavLink>
-                </MenuItem>
+                <NavLink to="/login" className="navLink">
+                    <MenuItem>Login</MenuItem>
+                </NavLink>
             </Menu>
         </div>
     );

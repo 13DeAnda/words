@@ -48,7 +48,7 @@ export const isTopUser = async (user: UserI) => {
                 rank: parseInt(index) + 1,
                 userId: user.id,
                 id: parseInt(index),
-                username: user.username,
+                email: user.email,
                 score: user.score,
             };
 
