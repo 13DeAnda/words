@@ -1,5 +1,6 @@
 export interface UserI {
     id: number;
-    username: string;
+    email: string;
     score: number;
+    password: string;
 }

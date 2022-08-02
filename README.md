@@ -19,4 +19,4 @@ Open [http://localhost:4000]
 
 ## RUN the backend
 
-### `json-server --watch ./server/database.json`
+### `npm run serve`

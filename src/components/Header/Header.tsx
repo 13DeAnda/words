@@ -2,14 +2,13 @@ import React, { useState, MouseEvent } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import Logout from '@mui/icons-material/Logout';
 import HelpOutLinedIcon from '@mui/icons-material/HelpOutlineRounded';
 import './Header.css';
+import { NavLink } from 'react-router-dom';
 
 const helpText =
     'To play the game, guess the word, and click  the verify button, you have 4 tries, every try it will let you know which letters do are included on the word. Good Luck!';
@@ -41,7 +40,9 @@ export default function Header() {
                         </IconButton>
                     </Tooltip>
                 </Typography>
-                <div className={'menuItem title'}>WORDS</div>
+                <NavLink to="/" className="navLink menuItem">
+                    <div className={' title'}> WORDS </div>
+                </NavLink>
                 <Tooltip className="menuItem" title="Account settings">
                     <IconButton
                         onClick={handleMenuClick}
@@ -91,19 +92,17 @@ export default function Header() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem>
-                    <Avatar /> Profile
-                </MenuItem>
-                <MenuItem>
-                    <Avatar /> Stats
-                </MenuItem>
+                <NavLink to="/stats" className="navLink">
+                    <MenuItem>
+                        <Avatar />
+                        Stats
+                    </MenuItem>
+                </NavLink>
+                <MenuItem>DarkMode</MenuItem>
                 <Divider />
-                <MenuItem>
-                    <ListItemIcon>
-                        <Logout fontSize="small" />
-                    </ListItemIcon>
-                    Logout
-                </MenuItem>
+                <NavLink to="/login" className="navLink">
+                    <MenuItem>Login</MenuItem>
+                </NavLink>
             </Menu>
         </div>
     );
