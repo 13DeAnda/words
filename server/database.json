@@ -2,14 +2,14 @@
   "users": [
     {
       "email": "tamarinde0e@gmail.com",
-      "password": "$2a$10$tv/P5G9mtO5ur5VNjEK94.NP2eL.CFsCQe0OQMBNTw53r4eMAnxpq",
-      "score": 0,
+      "password": "$2a$10$CCBlE1OF76ZcruWOt4HXwes8pO1abddOibPDaaUKfC8L11WrzZMN6",
+      "score": 0.4,
       "id": 1
     },
     {
       "email": "tamarinde1e@gmail.com",
-      "password": "$2a$10$FsHUZcZLTCwVnf545CvrduS09COITxDXhDnpeWNDSlcn2xUS4pDwi",
-      "score": 0,
+      "password": "$2a$10$Mir.YhmTWCeV0y1njuNe9uqq1kCwGTWRxaH3lACuJNXQ9ouHCyagu",
+      "score": 6.997777777777777,
       "id": 2
     },
     {
@@ -35,6 +35,12 @@
       "password": "$2a$10$9NMHgIET74fY.15FkYIV2uyvQkLWmlVLZD0ljkf71kKVF/1cMMP9u",
       "score": 0,
       "id": 6
+    },
+    {
+      "email": "tamarinde1e1@gmail.com",
+      "password": "$2a$10$ikhRmWpXxXEDHGLEB8M2iurQ4dSOTOWlU88h718plc.NZszFSQ7bu",
+      "score": 3,
+      "id": 7
     }
   ],
   "topUsers": [

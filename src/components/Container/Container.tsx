@@ -6,7 +6,6 @@ import { useStopwatch } from 'react-timer-hook';
 import Word from '../Word/Word';
 import GameStatsModal from './GameStatsModal/GameStatsModal';
 import { getRandomWord, getUser, updateUser, loading } from '../../services/GameService';
-const userId = 1; // TODO: replace once we have users hook up.
 
 export default function Container() {
     const [word, setWord] = useState<string>('');
@@ -15,6 +14,7 @@ export default function Container() {
     const [scoreModal, setScoreModal] = useState<string | null>(null);
     const [scoreDisplayed, setScoreDisplayed] = useState<number>(0);
     const { seconds, minutes, start, reset } = useStopwatch({ autoStart: false });
+    const userId = localStorage.getItem('wordsAppUserId') || '';
 
     const formatTime = (time: number) => {
         return String(time).padStart(2, '0');
@@ -24,6 +24,8 @@ export default function Container() {
         console.log('word:', wordResponse);
         setWord(wordResponse);
         addWordLine(wordResponse);
+
+        // time needs to be moved into its own component?
         if (seconds || minutes) {
             reset();
         } else {
@@ -68,25 +70,35 @@ export default function Container() {
         }
     };
 
-    // TODO: needs a pop up declaring game was won or lost
     const gameWon = async () => {
-        const userResponse = await getUser(userId);
+        const triesLength = document.getElementsByClassName('wordLine').length;
+        const newScore = 5 - triesLength - (minutes + seconds / 60) / 60 + score;
+        console.log('new trie', triesLength, newScore);
 
-        const newScore = userResponse.score + ((5 - tries.length) * Math.round(minutes + seconds / 60)) / 60;
-        userResponse.score = newScore;
-        const newScoreR = await updateUser(userId, userResponse);
-        setScoreDisplayed(newScoreR.score);
-        setScore(newScoreR.score);
+        if (userId.length) {
+            const userResponse = await getUser(userId);
+            userResponse.score = newScore;
+            const newScoreR = await updateUser(userId, userResponse);
+        }
+
+        console.log('new score', newScore);
+        setScoreDisplayed(newScore);
+        setScore(newScore);
         setScoreModal('won');
     };
     const gameOver = async () => {
-        const userResponse = await getUser(userId);
+        if (userId.length) {
+            const userResponse = await getUser(userId);
+            const newScore = userResponse.score - 1;
+            userResponse.score = newScore;
+            const newScoreR = await updateUser(userId, userResponse);
+            setScoreDisplayed(newScoreR.score);
+            setScore(newScoreR.score);
+        } else {
+            setScoreDisplayed(scoreDisplayed - 1);
+            setScore(score - 1);
+        }
 
-        const newScore = userResponse.score - 1;
-        userResponse.score = newScore;
-        const newScoreR = await updateUser(userId, userResponse);
-        setScoreDisplayed(newScoreR.score);
-        setScore(newScoreR.score);
         setScoreModal('lost');
     };
     const gameRestart = () => {
@@ -98,7 +110,9 @@ export default function Container() {
     useEffect(() => {
         if (!word.length && !loading) {
             retriveWord();
-            retriveUserScore();
+            if (userId.length) {
+                retriveUserScore();
+            }
         }
     }, []);
 

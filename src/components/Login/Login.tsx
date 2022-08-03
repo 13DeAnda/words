@@ -34,6 +34,7 @@ function Login() {
         if (response.status === 400) {
             setError(response.data);
         } else {
+            localStorage.setItem('wordsAppUserId', response.user.id);
             localStorage.setItem('wordsAppToken', response.accessToken);
             history('/');
         }
@@ -45,6 +46,7 @@ function Login() {
         if (response.status === 400) {
             setError(response.data);
         } else {
+            localStorage.setItem('wordsAppUserId', response.user.id);
             localStorage.setItem('wordsAppToken', response.accessToken);
             history('/');
         }

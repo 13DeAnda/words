@@ -24,7 +24,7 @@ export const getUsers = async () => {
     return response;
 };
 
-export const getUser = async (id: number) => {
+export const getUser = async (id: number | string) => {
     const response = await axios.get(`${baseDatabase}/users/${id}`).then((response) => {
         return response.data;
     });
@@ -32,7 +32,7 @@ export const getUser = async (id: number) => {
     return response;
 };
 
-export const updateUser = async (id: number, data: UserI) => {
+export const updateUser = async (id: number | string, data: UserI) => {
     const response = await axios
         .patch(`${baseDatabase}/users/${id}`, data, {
             headers: { 'Content-Type': 'application/json' },

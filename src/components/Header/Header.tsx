@@ -9,14 +9,14 @@ import Tooltip from '@mui/material/Tooltip';
 import HelpOutLinedIcon from '@mui/icons-material/HelpOutlineRounded';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
-
+import { isLoggedIn } from '../../services/AuthService';
 const helpText =
     'To play the game, guess the word, and click  the verify button, you have 4 tries, every try it will let you know which letters do are included on the word. Good Luck!';
 export default function Header() {
     const [openHelp, setOpenHelp] = useState<boolean>(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
-
+    const isSigned = isLoggedIn();
     const handleMenuClick = (event: MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -101,7 +101,7 @@ export default function Header() {
                 <MenuItem>DarkMode</MenuItem>
                 <Divider />
                 <NavLink to="/login" className="navLink">
-                    <MenuItem>Login</MenuItem>
+                    <MenuItem>{isSigned ? 'Log Out' : 'Log In'}</MenuItem>
                 </NavLink>
             </Menu>
         </div>
