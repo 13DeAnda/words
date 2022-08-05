@@ -35,7 +35,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
-        "serve": "json-server --watch ./server/database.json -m ./node_modules/json-server-auth"
+        "serve": "json-server --watch ./server/database.json -m ./node_modules/json-server-auth -r routesAuth.json"
     },
     "eslintConfig": {
         "extends": [

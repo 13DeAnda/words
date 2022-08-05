@@ -16,8 +16,8 @@ import { IloginCred } from '../../Interfaces/LoginCred';
 function Login() {
     const history = useNavigate();
     const [values, setValues] = useState<any>({
-        email: 'tamarinde1e@gmail.com',
-        password: '123#sks!',
+        email: 'losamigos@gmail.com',
+        password: 'skski!.',
         passwordConfirm: '',
         showPassword: false,
     });

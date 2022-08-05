@@ -17,25 +17,36 @@ export const getRandomWord = async () => {
 };
 
 export const getUsers = async () => {
-    const response = await axios.get(`${baseDatabase}/users`).then((response) => {
-        return response.data;
-    });
+    const token = localStorage.getItem('wordsAppToken');
+    const response = await axios
+        .get(`${baseDatabase}/users`, {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+            return response.data;
+        });
 
     return response;
 };
 
 export const getUser = async (id: number | string) => {
-    const response = await axios.get(`${baseDatabase}/users/${id}`).then((response) => {
-        return response.data;
-    });
+    const token = localStorage.getItem('wordsAppToken');
+    const response = await axios
+        .get(`${baseDatabase}/users/${id}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+            return response.data;
+        });
 
     return response;
 };
 
 export const updateUser = async (id: number | string, data: UserI) => {
+    const token = localStorage.getItem('wordsAppToken');
     const response = await axios
         .patch(`${baseDatabase}/users/${id}`, data, {
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         })
         .then((response) => {
             return response.data;

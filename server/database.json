@@ -1,69 +1,75 @@
 {
-  "users": [
-    {
-      "email": "tamarinde0e@gmail.com",
-      "password": "$2a$10$CCBlE1OF76ZcruWOt4HXwes8pO1abddOibPDaaUKfC8L11WrzZMN6",
-      "score": 0.4,
-      "id": 1
-    },
-    {
-      "email": "tamarinde1e@gmail.com",
-      "password": "$2a$10$Mir.YhmTWCeV0y1njuNe9uqq1kCwGTWRxaH3lACuJNXQ9ouHCyagu",
-      "score": 6.997777777777777,
-      "id": 2
-    },
-    {
-      "email": "thefighter@gmail.com",
-      "password": "$2a$10$p3j4BuKSCEh8C9d3rRpAkeP149YyVjxIuX9.M1paCg28rlb/IFJ..",
-      "score": 0,
-      "id": 3
-    },
-    {
-      "email": "thefighter123e@gmail.com",
-      "password": "$2a$10$9uICe5FhTnds8pnsaDaF.uQtGE.CLterpYDJ9goK0Z5yUz.nurH.m",
-      "score": 0,
-      "id": 4
-    },
-    {
-      "email": "tamarinde51e@gmail.com",
-      "password": "$2a$10$UNaBqkVMeglTryS6xDCYkeBFOZbSPGinvTlAYeJ1bk4l2.8bjB.KO",
-      "score": 0,
-      "id": 5
-    },
-    {
-      "email": "wtamarinde1e@gmail.com",
-      "password": "$2a$10$9NMHgIET74fY.15FkYIV2uyvQkLWmlVLZD0ljkf71kKVF/1cMMP9u",
-      "score": 0,
-      "id": 6
-    },
-    {
-      "email": "tamarinde1e1@gmail.com",
-      "password": "$2a$10$ikhRmWpXxXEDHGLEB8M2iurQ4dSOTOWlU88h718plc.NZszFSQ7bu",
-      "score": 3,
-      "id": 7
-    }
-  ],
-  "topUsers": [
-    {
-      "id": 0,
-      "userId": 3,
-      "rank": 1,
-      "username": "Manasama",
-      "score": 4333355
-    },
-    {
-      "id": 1,
-      "userId": 1,
-      "rank": 2,
-      "username": "13DeAnda",
-      "score": 345455
-    },
-    {
-      "id": 2,
-      "userId": 5,
-      "rank": 3,
-      "username": "jamesi",
-      "score": 22345
-    }
-  ]
+    "users": [
+        {
+            "email": "tamarinde0e@gmail.com",
+            "password": "$2a$10$CCBlE1OF76ZcruWOt4HXwes8pO1abddOibPDaaUKfC8L11WrzZMN6",
+            "score": 499494,
+            "id": 1
+        },
+        {
+            "email": "tamarinde1e@gmail.com",
+            "password": "$2a$10$Mir.YhmTWCeV0y1njuNe9uqq1kCwGTWRxaH3lACuJNXQ9ouHCyagu",
+            "score": 6.997777777777777,
+            "id": 2
+        },
+        {
+            "email": "thefighter@gmail.com",
+            "password": "$2a$10$p3j4BuKSCEh8C9d3rRpAkeP149YyVjxIuX9.M1paCg28rlb/IFJ..",
+            "score": 4444,
+            "id": 3
+        },
+        {
+            "email": "thefighter123e@gmail.com",
+            "password": "$2a$10$9uICe5FhTnds8pnsaDaF.uQtGE.CLterpYDJ9goK0Z5yUz.nurH.m",
+            "score": 0,
+            "id": 4
+        },
+        {
+            "email": "tamarinde51e@gmail.com",
+            "password": "$2a$10$UNaBqkVMeglTryS6xDCYkeBFOZbSPGinvTlAYeJ1bk4l2.8bjB.KO",
+            "score": 0,
+            "id": 5
+        },
+        {
+            "email": "wtamarinde1e@gmail.com",
+            "password": "$2a$10$9NMHgIET74fY.15FkYIV2uyvQkLWmlVLZD0ljkf71kKVF/1cMMP9u",
+            "score": 0,
+            "id": 6
+        },
+        {
+            "email": "tamarinde1e1@gmail.com",
+            "password": "$2a$10$ikhRmWpXxXEDHGLEB8M2iurQ4dSOTOWlU88h718plc.NZszFSQ7bu",
+            "score": 3,
+            "id": 7
+        },
+        {
+            "email": "losamigos@gmail.com",
+            "password": "$2a$10$DU4K.AYj4.hR4Jxbcxzlx.t/Qgrzob/wpb7Nh.qEOw/eJY/19g9ki",
+            "score": 0,
+            "id": 8
+        }
+    ],
+    "topUsers": [
+        {
+            "id": 0,
+            "userId": 3,
+            "rank": 1,
+            "username": "Manasama",
+            "score": 4333355
+        },
+        {
+            "id": 1,
+            "userId": 1,
+            "rank": 2,
+            "username": "13DeAnda",
+            "score": 345455
+        },
+        {
+            "id": 2,
+            "userId": 5,
+            "rank": 3,
+            "username": "jamesi",
+            "score": 22345
+        }
+    ]
 }

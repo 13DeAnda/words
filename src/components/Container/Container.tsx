@@ -73,15 +73,12 @@ export default function Container() {
     const gameWon = async () => {
         const triesLength = document.getElementsByClassName('wordLine').length;
         const newScore = 5 - triesLength - (minutes + seconds / 60) / 60 + score;
-        console.log('new trie', triesLength, newScore);
 
         if (userId.length) {
             const userResponse = await getUser(userId);
             userResponse.score = newScore;
             const newScoreR = await updateUser(userId, userResponse);
         }
-
-        console.log('new score', newScore);
         setScoreDisplayed(newScore);
         setScore(newScore);
         setScoreModal('won');
