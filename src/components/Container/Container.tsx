@@ -35,9 +35,7 @@ export default function Container() {
 
     const retriveUserScore = async () => {
         const userResponse = await getUser(userId);
-        if (userResponse.status && userResponse.status === 403) {
-            window.location.reload();
-        } else {
+        if (!userResponse.status) {
             const score = userResponse.score;
             setScoreDisplayed(score);
         }

@@ -17,6 +17,7 @@ export default function Header() {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const isSigned = isLoggedIn();
+    const user = localStorage.getItem('wordsAppUser');
     const handleMenuClick = (event: MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -52,7 +53,7 @@ export default function Header() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                        <Avatar /> {!isSigned ? 'Guest' : user}
                     </IconButton>
                 </Tooltip>
             </div>
@@ -93,10 +94,7 @@ export default function Header() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <NavLink to="/stats" className="navLink">
-                    <MenuItem>
-                        <Avatar />
-                        Stats
-                    </MenuItem>
+                    <MenuItem>Stats</MenuItem>
                 </NavLink>
                 <MenuItem>DarkMode</MenuItem>
                 <Divider />

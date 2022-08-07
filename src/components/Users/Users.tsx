@@ -12,12 +12,16 @@ function Users() {
     const userId = localStorage.getItem('wordsAppUserId') || '';
 
     const retriveTopScores = async () => {
-        const users = await getTopUsers();
-        setTopScores(users);
+        const response = await getTopUsers();
+        if (!response.status) {
+            setTopScores(response);
+        }
     };
     const retriveUser = async () => {
-        const user = await getUser(userId);
-        setUser(user);
+        const response = await getUser(userId);
+        if (!response.status) {
+            setUser(response);
+        }
     };
 
     useEffect(() => {
@@ -28,7 +32,6 @@ function Users() {
             }
         }
     }, []);
-
     return (
         <div className="Container">
             {topScores && (

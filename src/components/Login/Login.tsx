@@ -36,6 +36,7 @@ function Login() {
         } else {
             localStorage.setItem('wordsAppUserId', response.user.id);
             localStorage.setItem('wordsAppToken', response.accessToken);
+            localStorage.setItem('wordsAppUser', response.user.email);
             history('/');
         }
     };

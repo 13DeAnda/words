@@ -60,5 +60,6 @@ export const isLoggedIn = () => {
 export const logOut = () => {
     localStorage.removeItem('wordsAppToken');
     localStorage.removeItem('wordsAppUserId');
+    localStorage.removeItem('wordsAppUser');
     window.location.reload();
 };
