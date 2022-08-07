@@ -3,7 +3,7 @@ const baseDatabase = 'http://localhost:3000';
 
 import { UserI } from '../Interfaces/user';
 import axios from 'axios';
-
+import { logOut } from './AuthService';
 export let loading = false;
 
 export const getRandomWord = async () => {
@@ -24,6 +24,12 @@ export const getUsers = async () => {
         })
         .then((response) => {
             return response.data;
+        })
+        .catch((err) => {
+            if (err.response.status) {
+                logOut();
+            }
+            return err.response;
         });
 
     return response;
@@ -37,6 +43,12 @@ export const getUser = async (id: number | string) => {
         })
         .then((response) => {
             return response.data;
+        })
+        .catch((err) => {
+            if (err.response.status) {
+                logOut();
+            }
+            return err.response;
         });
 
     return response;
@@ -50,6 +62,12 @@ export const updateUser = async (id: number | string, data: UserI) => {
         })
         .then((response) => {
             return response.data;
+        })
+        .catch((err) => {
+            if (err.response.status) {
+                logOut();
+            }
+            return err.response;
         });
 
     return response;

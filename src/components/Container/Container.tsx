@@ -35,8 +35,12 @@ export default function Container() {
 
     const retriveUserScore = async () => {
         const userResponse = await getUser(userId);
-        const score = userResponse.score;
-        setScoreDisplayed(score);
+        if (userResponse.status && userResponse.status === 403) {
+            window.location.reload();
+        } else {
+            const score = userResponse.score;
+            setScoreDisplayed(score);
+        }
     };
 
     const onAttempt = (won: boolean, word: string) => {
