@@ -10,6 +10,9 @@ import HelpOutLinedIcon from '@mui/icons-material/HelpOutlineRounded';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 import { isLoggedIn } from '../../services/AuthService';
+import { SwitchCustom } from './SwitchCustom';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 const helpText =
     'To play the game, guess the word, and click  the verify button, you have 4 tries, every try it will let you know which letters do are included on the word. Good Luck!';
 export default function Header() {
@@ -63,7 +66,6 @@ export default function Header() {
                 id="account-menu"
                 open={open}
                 onClose={handleClose}
-                onClick={handleClose}
                 PaperProps={{
                     elevation: 0,
                     sx: {
@@ -93,12 +95,14 @@ export default function Header() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <NavLink to="/stats" className="navLink">
+                <NavLink to="/stats" className="navLink" onClick={handleClose}>
                     <MenuItem>Stats</MenuItem>
                 </NavLink>
-                <MenuItem>DarkMode</MenuItem>
+                <MenuItem>
+                    <FormControlLabel control={<SwitchCustom sx={{ m: 1 }} defaultChecked />} label="Change Mode" />
+                </MenuItem>
                 <Divider />
-                <NavLink to="/login" className="navLink">
+                <NavLink to="/login" className="navLink" onClick={handleClose}>
                     <MenuItem>{isSigned ? 'Log Out' : 'Log In'}</MenuItem>
                 </NavLink>
             </Menu>
