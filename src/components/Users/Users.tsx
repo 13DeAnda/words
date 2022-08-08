@@ -5,29 +5,33 @@ import { getUser } from '../../services/GameService';
 import { TopUserI } from '../../Interfaces/topUser';
 import { UserI } from '../../Interfaces/user';
 
-//TODO: temp this should be cached at login or score recording
 // TODO: must introduce loading icons
-const userId = 1;
 function Users() {
     const [topScores, setTopScores] = useState<TopUserI[]>([]);
     const [user, setUser] = useState<UserI | null>(null);
+    const userId = localStorage.getItem('wordsAppUserId') || '';
 
     const retriveTopScores = async () => {
-        const users = await getTopUsers();
-        setTopScores(users);
+        const response = await getTopUsers();
+        if (!response.status) {
+            setTopScores(response);
+        }
     };
     const retriveUser = async () => {
-        const user = await getUser(userId);
-        setUser(user);
+        const response = await getUser(userId);
+        if (!response.status) {
+            setUser(response);
+        }
     };
 
     useEffect(() => {
         if (!loadingTopUsers) {
             retriveTopScores();
-            retriveUser();
+            if (userId.length) {
+                retriveUser();
+            }
         }
     }, []);
-
     return (
         <div className="Container">
             {topScores && (
@@ -36,7 +40,7 @@ function Users() {
                     {topScores.map((user, index) => (
                         <div
                             key={`topUser_${index}`}
-                            className={user.userId == userId ? 'yourTopScore topScore' : 'topScore'}
+                            className={user.userId == parseInt(userId) ? 'yourTopScore topScore' : 'topScore'}
                         >
                             <div>
                                 <b># {user.rank}</b> {user.email}{' '}
