@@ -39,7 +39,7 @@ function Word(props: { word: string; onAtempt: (success: boolean, word: string) 
                 setLettersTyped(lettersTyped - 1);
             }
         } else {
-            if (lettersTyped < props.word.length) {
+            if (lettersTyped < props.word.length && letter !== 'Dead') {
                 const wordArrayCopy = [...typedWord];
                 wordArrayCopy[lettersTyped].typed = letter;
                 setLettersTyped(lettersTyped + 1);
